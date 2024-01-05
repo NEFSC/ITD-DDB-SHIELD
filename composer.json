@@ -35,6 +35,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "post-update-cmd": "./fixDateFormat.sh"
     }
 }
