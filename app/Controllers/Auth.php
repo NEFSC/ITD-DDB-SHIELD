@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Auth extends BaseController
+class Auth extends Base
 {
     public function index()
     {
