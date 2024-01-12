@@ -11,30 +11,38 @@ class Admin extends Base
 {
     protected $title = 'Admin';
     protected $content = 'Admin';
+
+    protected function authenticate()
+    {
+        if (!auth()->user() || !auth()->user()->can('admin.access')) {
+            return redirect()->to('/');
+        }
+    }
     
     public function index()
     {
+        $this->authenticate();
         $user = auth()->user();
-        return view('admin');
+        return view('admin', [
+            'title' => $this->title,
+            'content' => $this->content]);
     }
 
     public function addUserToGroup()
     {
-        
+        $this->authenticate();
         $user = auth()->user();
         $user->addGroup('admin', 'beta');
     }
 
     public function listUsers()
     {
-        if (!auth()->user() || !auth()->user()->can('admin.access')) {
-            return redirect()->to('/');
-        }
+        $this->authenticate();
         $userModel = new UserModel();
         $users = $userModel->findAll();
         return view('admin', [
             'users' => $users,
-            'title' => $this->title,
+            'title' => 'List Users',
             'content' => $this->content]);
     }
 }

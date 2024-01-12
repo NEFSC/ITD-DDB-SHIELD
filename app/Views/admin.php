@@ -1,9 +1,9 @@
-<h1>Admin</h1>
+
 <?= $this->include('Layouts/header') ?>
 <?= $this->include('Layouts/navbar') ?>
 
     <h1><?= $title ?></h1>
-    <h2><?= $content ?></h2>
+
 <?php if (isset($users)): ?>
     <div class="card" style="inline-size: 18rem;">
 
@@ -13,7 +13,10 @@
                 <?= $user->email ?>
             </div>
             <div class="card-body">
-                ...
+                <?php foreach ($user->getGroups() as $group): ?>
+                    <span class="badge badge-primary text-bg-primary"><?= $group ?></span>
+                <?php endforeach ?>
+                <span class="badge badge-secondary text-bg-secondary">Edit</span>
             </div>
         <?php endforeach ?>
         <div class="card-footer">

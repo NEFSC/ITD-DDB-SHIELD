@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('login', 'Auth::login');
-$routes->get('logout', 'Auth::logout');
+//$routes->get('logout', 'Auth::logout');
 $routes->get('register', 'Auth::register');
 $routes->get('forgot', 'Auth::forgotPassword');
 $routes->get('reset-password', 'Auth::resetPassword');
